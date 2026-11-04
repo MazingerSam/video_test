@@ -4,13 +4,19 @@
 
 格式參考 [Keep a Changelog](https://keepachangelog.com/zh-TW/1.0.0/)。
 
+## [0.3.0] - 2026-11-04
+
+### 新增 (Added)
+- **Antigravity ➔ Colab 遠端 GPU 橋接架構**：
+  - Colab 端：提供 FastAPI 背景服務與 `pycloudflared` 免費免註冊穿透，輸出公網專屬 Tunnel URL。
+  - 模型顯存常駐：AnimateDiff 與 SVD-XT 預載於顯存，後續生成大幅提速至 30~60 秒。
+  - 本地端：建立 [`src/colab_client.py`](file:///c:/Users/sam09/OneDrive/文件/AiAgent/video_test/src/colab_client.py) CLI，支援文字生影與圖片生影，完成後自動下載 MP4 檔案至 `outputs/`。
+
 ## [0.2.0] - 2026-11-04
 
 ### 新增 (Added)
 - **100% 開源免金鑰工作流**：移除第三方 API 限制，完全基於 Google Colab 免費 GPU (T4)。
-- **AnimateDiff (文字轉影片)**：整合 Realistic Vision 與 Motion Adapter，文字直接產出動態影片。
-- **Stable Video Diffusion XT (圖片轉影片)**：整合 Stability AI 官方 SVD-XT 模型，高畫質靜態圖轉 25 影格運鏡影片。
-- **T4 顯存最佳化**：加入 VAE Slicing 與 Model CPU Offload，保證於免費 Colab 執行時不發生 CUDA OOM。
+- **AnimateDiff (文字轉影片)** 與 **Stable Video Diffusion XT (圖片轉影片)**。
 
 ## [0.1.0] - 2026-11-04
 

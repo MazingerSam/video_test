@@ -7,3 +7,5 @@ safetensors>=0.4.0
 torchvision
 Pillow>=9.5.0
 tqdm>=4.66.0
+requests>=2.31.0
+python-dotenv>=1.0.0

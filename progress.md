@@ -10,9 +10,8 @@
 - [x] 實作工作流 1：AnimateDiff (Text-to-Video 文字生影片)
 - [x] 實作工作流 2：Stable Video Diffusion (SVD-XT 圖片生動態影片)
 - [x] 完成 Colab T4 顯存最佳化 (VAE Slicing, CPU Offload，防 OOM)
-- [x] 支援 Google Drive 自動雲端備份
 
-## 里程碑 3：後續擴展功能 (待辦 ⏳)
-- [ ] 加入 AnimateDiff-Lightning 4-step / 8-step 極速推論支援
-- [ ] 支援本地 Gradio 互動介面
-- [ ] 支援音樂與配樂自動合成
+## 里程碑 3：Antigravity ➔ Colab 遠端 GPU 橋接架構 (已完成 ✅)
+- [x] 建立 Colab 端 FastAPI 橋接服務與 Cloudflare Tunnel 穿透模組
+- [x] 建立本地客戶端 [`src/colab_client.py`](file:///c:/Users/sam09/OneDrive/文件/AiAgent/video_test/src/colab_client.py)
+- [x] 支援本地 Antigravity 透過指令一鍵遠端調用 GPU 並自動下載 MP4

@@ -1,22 +1,29 @@
-# 🎬 Open-Source AI Video Workflow (Google Colab 免費 GPU 專用)
+# 🎬 Antigravity ➔ Google Colab 遠端 GPU 影片生成中樞
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MazingerSam/video_test/blob/main/notebooks/colab_ai_video_workflow.ipynb)
 
-本專案提供於 **Google Colab 免費 T4 GPU** 運行的 **100% 免費、開源 AI 影片生成工作流**。  
-**完全不需要申請或填入任何付費 API 金鑰**，所有模型權重直接在 Colab 雲端顯卡載入與運算！
+本專案實現了 **「本地 Antigravity 撰寫提示詞指揮 ➔ 遠端 Google Colab 免費 T4 GPU 算力生成 ➔ 自動下載 MP4 至本地」** 的全自動化影片生成中樞！
 
 ---
 
-## 🌟 核心開源雙工作流
+## 🌟 核心架構與優勢
 
-1. **工作流 1：AnimateDiff (文字轉影片 / Text-to-Video)**
-   - 輸入任意英文提示詞，自動生成生動、流暢的動態短影片。
-   - 整合了 Realistic Vision V5.1 與 AnimateDiff Motion Adapter。
-   - 針對 Colab T4 顯存最佳化（VAE Slicing + CPU Offload，防 OOM）。
+```text
+[ 您在 Antigravity 聊天 ]
+       │ "請幫我做一段太空人在霓虹星球漫步的影片"
+       ▼
+[ Antigravity Agent ] ──(發送 API 請求)──▶ [ Google Colab 雲端 T4 GPU 伺服器 ]
+       ▲                                                    │
+       │                                                    ▼
+       └──────────(自動下載 MP4 至 outputs/)────────── [ AnimateDiff / SVD 模型推論 ]
+```
 
-2. **工作流 2：Stable Video Diffusion - SVD (圖片轉影片 / Image-to-Video)**
-   - 由 Stability AI 開源的旗艦級圖像動態化模型（SVD-XT）。
-   - 上傳任意靜態風景、人物或概念圖，自動生成高解析度電影感運鏡影片（1024x576，25 影格）。
+1. **零成本、免付費 API**：直接利用 Google Colab 每日免費提供的 15GB T4 GPU。
+2. **模型常駐顯存 (Warm-up)**：首次載入後常駐 GPU，後續每次生成只需 30~60 秒，無須重複下載權重。
+3. **免設定穿透 (Cloudflare Tunnel)**：透過免註冊、免金鑰的穿透技術，一鍵在 Colab 產生外部安全連線網址。
+4. **雙開源工作流支援**：
+   - **文字轉影片 (Text-to-Video)**：AnimateDiff + Realistic Vision
+   - **圖片轉影片 (Image-to-Video)**：Stable Video Diffusion XT (SVD-XT)
 
 ---
 
@@ -25,41 +32,41 @@
 ```text
 video_test/
 ├── notebooks/
-│   └── colab_ai_video_workflow.ipynb   # Google Colab 開源影片生成筆記本
+│   └── colab_ai_video_workflow.ipynb   # Colab 遠端 GPU 伺服器核心筆記本
 ├── src/
-│   ├── __init__.py                     # 模組初始化
-│   ├── config.py                       # 開源模型權重配置
-│   ├── video_generator.py              # AnimateDiff 與 SVD 開源工作流封裝
-│   └── utils.py                        # 下載與環境工具
+│   ├── colab_client.py                 # Antigravity 本地連線與命令列客戶端
+│   ├── video_generator.py              # 開源模型 Pipeline 封裝
+│   ├── config.py                       # 模型與路徑配置
+│   └── utils.py                        # 工具函式庫
+├── outputs/                            # 生成完成之 MP4 本地儲存資料夾
 ├── .gitignore                          # Git 忽略設定
-├── CHANGELOG.md                        # 版本變更紀錄
-├── progress.md                         # 任務與進度追蹤
+├── CHANGELOG.md                        # 變更紀錄
+├── progress.md                         # 進度追蹤
 ├── README.md                           # 專案指南 (本文件)
-└── requirements.txt                    # 開源相依套件 (Diffusers, Transformers, PyTorch)
+└── requirements.txt                    # 相依套件
 ```
 
 ---
 
-## 🚀 快速開始 (只需 2 步)
+## 🚀 完整使用步驟 (只需 3 步)
 
-1. **一鍵開啟 Colab**：  
-   點擊上方的 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MazingerSam/video_test/blob/main/notebooks/colab_ai_video_workflow.ipynb)。
-2. **切換為 T4 GPU**：  
-   在 Colab 選單選擇 **「執行階段」➔「變更執行階段類型」➔「T4 GPU」**。
-3. **依序點擊執行儲存格**：  
-   無須填入任何金鑰，即可直接在 Colab 內生成並播放您的 AI 影片！
+### 步驟 1：在 Colab 啟動 GPU 伺服器
+1. 點擊頂部的 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MazingerSam/video_test/blob/main/notebooks/colab_ai_video_workflow.ipynb) 開啟筆記本。
+2. 確認執行階段類型為 **T4 GPU**。
+3. 依序執行步驟 0、1、2、3 儲存格。完成後會輸出專屬連線網址：
+   ```text
+   🔗 專屬連線網址: https://xxxx-xxxx-xxxx.trycloudflare.com
+   ```
 
----
+### 步驟 2：將網址交給 Antigravity
+在 Antigravity 聊天室貼上該網址（例如：`https://xxxx.trycloudflare.com`），或在本地執行：
+```bash
+python src/colab_client.py connect https://xxxx.trycloudflare.com
+```
 
-## 🔑 開源模型一覽
+### 步驟 3：在 Antigravity 隨意生成影片！
+伺服器連線成功後，只要跟 Antigravity 說：
+- *「幫我生一段水下發光水母的影片」*
+- *「把這張圖片轉成運鏡影片」*
 
-| 模型 | 類型 | 來源庫 | 說明 |
-| :--- | :--- | :--- | :--- |
-| **AnimateDiff** | Text-to-Video | `guoyww/animatediff-motion-adapter-v1-5-2` | 經典開源文字生影片架構 |
-| **Realistic Vision** | Base UNet | `SG161222/Realistic_Vision_V5.1_noVAE` | 寫實擬真風格底模 |
-| **SVD-XT** | Image-to-Video | `stabilityai/stable-video-diffusion-img2vid-xt` | Stability AI 官方 25 影格長鏡頭圖生影 |
-
----
-
-## 📄 授權與維護
-由 AI Agent 輔助建立與維護。
+Antigravity 就會自動調用 Colab GPU 生成，並在完成後把 MP4 檔案下載至 `outputs/` 並在聊天室呈現！
