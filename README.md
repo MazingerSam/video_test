@@ -1,5 +1,7 @@
 # 🎬 AI Video Workflow (Google Colab & Python)
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MazingerSam/video_test/blob/main/notebooks/colab_ai_video_workflow.ipynb)
+
 本專案旨在提供於 **Google Colab** 雲端環境及本機中執行的 **AI 影片生成工作流**。整合了 Higgsfield AI 旗艦級擬真圖像模型（Soul v2）與電影級動態運鏡影片生成模型（Cinematic Studio），並支援雲端硬碟掛載、批次生成與互動式即時預覽。
 
 ---
