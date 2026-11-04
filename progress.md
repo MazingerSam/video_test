@@ -15,3 +15,4 @@
 - [x] 建立 Colab 端 FastAPI 橋接服務與 Cloudflare Tunnel 穿透模組
 - [x] 建立本地客戶端 [`src/colab_client.py`](file:///c:/Users/sam09/OneDrive/文件/AiAgent/video_test/src/colab_client.py)
 - [x] 支援本地 Antigravity 透過指令一鍵遠端調用 GPU 並自動下載 MP4
+- [x] 封裝為標準通用 Skill（支援 Antigravity、OpenCode 等 AI Agent）
