@@ -44,8 +44,15 @@ class OpenSourceVideoWorkflow:
 
         # 顯存優化 (Colab T4 友好)
         if torch.cuda.is_available():
-            pipe.enable_vae_slicing()
-            pipe.enable_model_cpu_offload()
+            if hasattr(pipe, "vae") and hasattr(pipe.vae, "enable_slicing"):
+                pipe.vae.enable_slicing()
+            elif hasattr(pipe, "enable_vae_slicing"):
+                pipe.enable_vae_slicing()
+
+            if hasattr(pipe, "enable_model_cpu_offload"):
+                pipe.enable_model_cpu_offload()
+            else:
+                pipe.to(device)
 
         output = pipe(
             prompt=prompt,
@@ -87,8 +94,15 @@ class OpenSourceVideoWorkflow:
 
         # 顯存優化
         if torch.cuda.is_available():
-            pipe.enable_vae_slicing()
-            pipe.enable_model_cpu_offload()
+            if hasattr(pipe, "vae") and hasattr(pipe.vae, "enable_slicing"):
+                pipe.vae.enable_slicing()
+            elif hasattr(pipe, "enable_vae_slicing"):
+                pipe.enable_vae_slicing()
+
+            if hasattr(pipe, "enable_model_cpu_offload"):
+                pipe.enable_model_cpu_offload()
+            else:
+                pipe.to("cuda")
 
         # 調整圖片尺寸為 1024x576 (SVD 最佳長寬比)
         image = image.resize((1024, 576))
