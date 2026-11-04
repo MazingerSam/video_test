@@ -5,6 +5,7 @@
 - [x] 建立標準基礎檔案 (`.gitignore`, `.env.example`, `requirements.txt`, `README.md`)
 - [x] 建立 Google Colab 工作流筆記本 (`notebooks/colab_ai_video_workflow.ipynb`)
 - [x] 建立模組化代碼架構 (`src/config.py`, `src/video_generator.py`, `src/utils.py`)
+- [x] 連接 GitHub 儲存庫 (`MazingerSam/video_test`) 並配置 Open in Colab 一鍵啟動連結
 
 ## 里程碑 2：Colab 工作流優化與自定義拓展 (待辦 ⏳)
 - [ ] 支援更多第三方開源生成模型介接 (如 Wan2.1 / HunyuanVideo API)
