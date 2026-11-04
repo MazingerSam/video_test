@@ -2,13 +2,17 @@
 
 ## 里程碑 1：專案初始化與結構設定 (已完成 ✅)
 - [x] 初始化 Git 儲存庫
-- [x] 建立標準基礎檔案 (`.gitignore`, `.env.example`, `requirements.txt`, `README.md`)
-- [x] 建立 Google Colab 工作流筆記本 (`notebooks/colab_ai_video_workflow.ipynb`)
-- [x] 建立模組化代碼架構 (`src/config.py`, `src/video_generator.py`, `src/utils.py`)
+- [x] 建立標準基礎檔案 (`.gitignore`, `requirements.txt`, `README.md`)
 - [x] 連接 GitHub 儲存庫 (`MazingerSam/video_test`) 並配置 Open in Colab 一鍵啟動連結
 
-## 里程碑 2：Colab 工作流優化與自定義拓展 (待辦 ⏳)
-- [ ] 支援更多第三方開源生成模型介接 (如 Wan2.1 / HunyuanVideo API)
-- [ ] 支援長影片連續生成 (Prompt Chaining & 影格銜接)
-- [ ] 加入 Gradio / Streamlit 互動介面 (Web UI)
-- [ ] 支援語音音訊與口型同步 (Lip-sync / Audio-driven)
+## 里程碑 2：開源免金鑰雙工作流升級 (已完成 ✅)
+- [x] 移除第三方付費 API 依賴，改為 100% 免費開源模型
+- [x] 實作工作流 1：AnimateDiff (Text-to-Video 文字生影片)
+- [x] 實作工作流 2：Stable Video Diffusion (SVD-XT 圖片生動態影片)
+- [x] 完成 Colab T4 顯存最佳化 (VAE Slicing, CPU Offload，防 OOM)
+- [x] 支援 Google Drive 自動雲端備份
+
+## 里程碑 3：後續擴展功能 (待辦 ⏳)
+- [ ] 加入 AnimateDiff-Lightning 4-step / 8-step 極速推論支援
+- [ ] 支援本地 Gradio 互動介面
+- [ ] 支援音樂與配樂自動合成

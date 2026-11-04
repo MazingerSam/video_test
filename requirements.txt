@@ -1,6 +1,9 @@
-higgsfield-client>=0.1.0
-python-dotenv>=1.0.0
-requests>=2.31.0
-pydantic>=2.0.0
+diffusers>=0.30.0
+transformers>=4.40.0
+accelerate>=0.28.0
+imageio>=2.30.0
+imageio-ffmpeg>=0.4.9
+safetensors>=0.4.0
+torchvision
+Pillow>=9.5.0
 tqdm>=4.66.0
-ipywidgets>=8.0.0
