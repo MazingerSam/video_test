@@ -160,8 +160,12 @@ def main():
         info = client.check_health()
         print("連線狀態:", info)
     elif args.command == "status":
-        info = client.check_health()
-        print("伺服器正常:", info)
+        try:
+            info = client.check_health()
+            print("伺服器正常:", info)
+        except Exception as e:
+            print("[!] Colab 目前離線中或 Tunnel 連線已失效。")
+            print("    請重啟 Colab 或執行 python connect.py 取得並綁定新網址。")
     elif args.command == "t2v":
         out = client.generate_text_video(prompt=args.prompt, num_frames=args.frames)
         print("本地檔案路徑:", out)
