@@ -4,6 +4,13 @@
 
 格式參考 [Keep a Changelog](https://keepachangelog.com/zh-TW/1.0.0/)。
 
+## [0.3.2] - 2026-11-13
+
+### 新增 (Added)
+- **Colab 斷線重啟標準 SOP 與自動化輔助工具**：
+  - 新增本機輔助工具 [`connect.py`](file:///c:/Users/sam09/OneDrive/文件/AiAgent/video_test/connect.py) 與 [`restart_colab.bat`](file:///c:/Users/sam09/OneDrive/文件/AiAgent/video_test/restart_colab.bat)，支援自動開啟瀏覽器並引導輸入新網址。
+  - 於 `colab-video-bridge` 技能中建立專屬〈Colab 重啟與重新連線 SOP〉，支援透過「全部執行 (Run all)」在 1 分鐘內重建遠端服務。
+
 ## [0.3.1] - 2026-11-13
 
 ### 變更 (Changed)

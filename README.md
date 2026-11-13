@@ -70,3 +70,17 @@ python src/colab_client.py connect https://xxxx.trycloudflare.com
 - *「把這張圖片轉成運鏡影片」*
 
 Antigravity 就會自動調用 Colab GPU 生成，並在完成後把 MP4 檔案下載至 `outputs/` 並在聊天室呈現！
+
+---
+
+## 🔄 日後重啟 Colab 快速指南 (Restart SOP)
+
+當 Colab 閒置休眠斷線、重開機或隔天要重新使用時，只需 1 分鐘即可重連：
+
+1. **一鍵開啟重啟工具**：
+   - 雙擊執行本機的 [`restart_colab.bat`](file:///c:/Users/sam09/OneDrive/文件/AiAgent/video_test/restart_colab.bat) 或執行 `python connect.py`。
+   - 系統會自動為您在瀏覽器彈出 Colab 筆記本。
+2. **在 Colab 點選「全部執行」**：
+   - 選單點選 **「執行階段 (Runtime)」➔「全部執行 (Run all)」**（快捷鍵 `Ctrl + F9`）。
+3. **貼上新網址**：
+   - 待步驟 3 執行完畢後，將終端顯示的新網址貼回終端機提示或直接貼給 Antigravity 聊天室，立即恢復連線！
