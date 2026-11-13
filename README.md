@@ -2,7 +2,7 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MazingerSam/video_test/blob/main/notebooks/colab_ai_video_workflow.ipynb)
 
-本專案實現了 **「本地 Antigravity 撰寫提示詞指揮 ➔ 遠端 Google Colab 免費 T4 GPU 算力生成 ➔ 自動下載 MP4 至本地」** 的全自動化影片生成中樞！
+本專案實現了 **「本地 Antigravity 撰寫提示詞指揮 ➔ 遠端 Google Colab L4 / T4 GPU 算力生成 ➔ 自動下載 MP4 至本地」** 的全自動化影片生成中樞！
 
 ---
 
@@ -12,13 +12,13 @@
 [ 您在 Antigravity 聊天 ]
        │ "請幫我做一段太空人在霓虹星球漫步的影片"
        ▼
-[ Antigravity Agent ] ──(發送 API 請求)──▶ [ Google Colab 雲端 T4 GPU 伺服器 ]
+[ Antigravity Agent ] ──(發送 API 請求)──▶ [ Google Colab 雲端 L4 / T4 GPU 伺服器 ]
        ▲                                                    │
        │                                                    ▼
        └──────────(自動下載 MP4 至 outputs/)────────── [ AnimateDiff / SVD 模型推論 ]
 ```
 
-1. **零成本、免付費 API**：直接利用 Google Colab 每日免費提供的 15GB T4 GPU。
+1. **零成本、免付費 API**：直接利用 Google Colab 每日免費提供的 L4 GPU (24GB 顯存，推薦) 或免費 T4 GPU。
 2. **模型常駐顯存 (Warm-up)**：首次載入後常駐 GPU，後續每次生成只需 30~60 秒，無須重複下載權重。
 3. **免設定穿透 (Cloudflare Tunnel)**：透過免註冊、免金鑰的穿透技術，一鍵在 Colab 產生外部安全連線網址。
 4. **雙開源工作流支援**：
@@ -52,7 +52,7 @@ video_test/
 
 ### 步驟 1：在 Colab 啟動 GPU 伺服器
 1. 點擊頂部的 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MazingerSam/video_test/blob/main/notebooks/colab_ai_video_workflow.ipynb) 開啟筆記本。
-2. 確認執行階段類型為 **T4 GPU**。
+2. 確認執行階段類型為 **L4 GPU**（推薦）或 **T4 GPU**。
 3. 依序執行步驟 0、1、2、3 儲存格。完成後會輸出專屬連線網址：
    ```text
    🔗 專屬連線網址: https://xxxx-xxxx-xxxx.trycloudflare.com

@@ -4,6 +4,12 @@
 
 格式參考 [Keep a Changelog](https://keepachangelog.com/zh-TW/1.0.0/)。
 
+## [0.3.1] - 2026-11-13
+
+### 變更 (Changed)
+- 將 Colab 筆記本預設硬體加速器配置提升至 **NVIDIA L4 GPU** (24GB 顯存，Ada Lovelace 架構)，提升影片生成速度與畫質。
+- 更新技能文件與說明文件，支援 L4 與 T4 雙規格無縫切換。
+
 ## [0.3.0] - 2026-11-04
 
 ### 新增 (Added)

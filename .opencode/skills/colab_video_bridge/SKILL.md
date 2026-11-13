@@ -1,11 +1,11 @@
 ---
 name: colab-video-bridge
-description: Google Colab 免費 GPU 遠端 AI 影片生成橋接工作流。讓本地 AI Agent (Antigravity、OpenCode、Claude 等) 透過 Cloudflare Tunnel 遠端調用 Colab 免費 T4 GPU，執行 AnimateDiff (文字生影) 與 Stable Video Diffusion (圖片生影)，並將生成的 MP4 自動下載回本地專案。
+description: Google Colab 免費 GPU 遠端 AI 影片生成橋接工作流。讓本地 AI Agent (Antigravity、OpenCode、Claude 等) 透過 Cloudflare Tunnel 遠端調用 Colab L4 / T4 GPU，執行 AnimateDiff (文字生影) 與 Stable Video Diffusion (圖片生影)，並將生成的 MP4 自動下載回本地專案。
 ---
 
 # Google Colab 遠端 GPU 影片生成技能指南 (Colab Video Bridge)
 
-本技能提供本地 AI Agent（如 Antigravity、OpenCode 等）調用 **Google Colab 免費 T4 GPU** 進行開源 AI 影片生成的標準流程與操作規範。
+本技能提供本地 AI Agent（如 Antigravity、OpenCode 等）調用 **Google Colab L4 / T4 GPU** 進行開源 AI 影片生成的標準流程與操作規範。
 
 ---
 
@@ -34,7 +34,7 @@ description: Google Colab 免費 GPU 遠端 AI 影片生成橋接工作流。讓
 1. **開啟 Notebook**：  
    使用專案筆記本：`https://colab.research.google.com/github/MazingerSam/video_test/blob/main/notebooks/colab_ai_video_workflow.ipynb`
 2. **確認 GPU 加速**：  
-   在 Colab 頂部選單點選 **「執行階段 (Runtime)」➔「變更執行階段類型」➔ 確認選擇「T4 GPU」**。
+   在 Colab 頂部選單點選 **「執行階段 (Runtime)」➔「變更執行階段類型」➔ 確認選擇「L4 GPU」（推薦，24GB 顯存）或「T4 GPU」**。
 3. **依序執行步驟 0 ~ 3**：
    - 步驟 0：檢查顯卡 (`!nvidia-smi`)。
    - 步驟 1：安裝套件 (`diffusers`, `transformers`, `fastapi`, `uvicorn`, `pycloudflared` 等)。
@@ -131,4 +131,4 @@ print("SVD 影片下載完成:", svd_video)
    - 若 Colab 重新整理或重連，Cloudflare Tunnel 網址會更新，需重新執行 `python src/colab_client.py connect <新網址>`。
 2. **CUDA Out of Memory (顯存溢出)**：
    - 模型載入已啟用 `enable_model_cpu_offload()` 與 `enable_slicing()`。
-   - 保持單次請求幀數在 16 幀（AnimateDiff）或 25 幀（SVD），符合 T4 15GB 顯存的最佳效能範圍。
+   - 保持單次請求幀數在 16 幀（AnimateDiff）或 25 幀（SVD），符合 L4 (24GB) / T4 (15GB) 顯存的最佳效能範圍。
